@@ -1,0 +1,36 @@
+.MuiDialog-paperWidthSm{
+    max-width: none !important;
+}
+
+.cartTitle{
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-family: cursive;
+}
+
+.totalPrice{
+        font-size: 1.5rem;
+    font-family: cursive;
+    font-weight: 700;
+}
+
+.buyAgainButton{
+    padding: 1rem 7rem;
+    font-size: 1.3rem;
+    font-family: cursive;
+    background: #800064;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.emptyCart{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: cursive;
+    text-align: center;
+}

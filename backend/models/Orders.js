@@ -10,7 +10,7 @@ const foodOrders = new Schema({
       quantity: Number,
       _id: String,
       date:String
-    },
+    }
   ],
 });
 
