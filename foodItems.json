@@ -1,0 +1,42 @@
+[
+  {
+    "categoryName": "biryani",
+    "dish": [
+      {
+        "name": "chicken fried rice",
+        "price": "100",
+        "quantity":1
+      },
+      {
+        "name": "miglayi chicken fried rice",
+        "price": "200",
+        "quantity": 1
+      },
+      {
+        "name": " aalo chicken rice",
+        "price": "200",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "categoryName": "pizza",
+    "dish": [
+      {
+        "name": "chicken pizza",
+        "price": "100",
+        "quantity": 1
+      },
+      {
+        "name": "miglayi pizza",
+        "price": "200",
+        "quantity": 1
+      },
+      {
+        "name": " aalo pizza",
+        "price": "200",
+        "quantity": 1
+      }
+    ]
+  }
+]
