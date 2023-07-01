@@ -2,53 +2,28 @@ const express = require("express");
 const router = express.Router();
 const Orders = require("../../models/Orders");
 
-router.post('/Orders',async(req,res)=>{
-    let eId = await Orders.findOne({'email': req.body.email})
-    if(eId === null){
-         try {
-           await Orders.create({
-             email: req.body.email,
-             orders: [
-               {
-                 name: req.body.name,
-                 price: req.body.price,
-                 quantity: req.body.quantity,
-                 _id: req.body._id,
-                 date:req.body.date
-               },
-             ],
-           });
+router.post("/Orders", async (req, res) => {
+  const { email, orders } = req.body;
+  try {
+    let orderDocument = await Orders.findOne({ email: email });
 
-           res.json({ success: "order placed" });
-         } catch (error) {
-           res.json({ "server error": error.message });
-         }
+    if (orderDocument === null) {
+      // If email does not exist, create a new document
+      await Orders.create({
+        email: email,
+        orders: orders, // Assuming the payload contains an array of orders
+      });
+      res.json({ success: "orders placed" });
+    } else {
+      // If email exists, append the new orders to the existing document
+      orderDocument.orders.push(...orders);
+      await orderDocument.save();
+      res.json({ success: "orders placed" });
     }
-    else{
-        try{
-              await Orders.findOneAndUpdate(
-                { email: req.body.email },
-                {
-                  $push: {
-                    orders: {
-                      name: req.body.name,
-                      price: req.body.price,
-                      quantity: req.body.quantity,
-                      _id: req.body._id,
-                      date: req.body.date,
-                    },
-                  },
-                }
-              ).then(() => {
-                res.json({ success: "order place" });
-              });
-        }
-        catch(error){
-              res.json({"server error":error.message})
-        }
-    }
-   
-})
+  } catch (error) {
+    res.json({ "server error": error.message });
+  }
+});
 
 module.exports = router;
 

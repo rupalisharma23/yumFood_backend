@@ -2,9 +2,10 @@ import React from 'react';
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import './Cart.css';
 import axios from 'axios';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Cart(props) {
-    let { cartItems, setCartItems } = props;
+    let { cartItems, setCartItems, setCartFlag } = props;
     const getTotalPrice = (items) => {
         let totalPrice = 0;
 
@@ -18,7 +19,10 @@ export default function Cart(props) {
 
     const buyOrders =() =>{
         return axios
-            .post(`http://localhost:5000/api/Orders`, cartItems)
+            .post(`http://localhost:5000/api/Orders`, {
+                email:localStorage.getItem('email'),
+                orders:cartItems
+            })
             .then((res) => {
                 setCartItems([])
             })
@@ -41,7 +45,10 @@ export default function Cart(props) {
           }}
       >
           <DialogContent>
-              <h3 className='cartTitle'>Cart</h3>
+            <div className='closeDiv'>
+                  <h3 className='cartTitle'>Cart</h3>
+                  <CloseIcon style={{ cursor: 'pointer' }} onClick={() => { setCartFlag(false) }} />
+            </div>
               {cartItems.length === 0?
                   <div className='emptyCart'>Your cart is empty</div>:(
                       <table style={{ width: '100%' }}>
@@ -60,8 +67,8 @@ export default function Cart(props) {
                                       <tr>
                                           <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{cart.name}</td>
                                           <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{cart.quantity}</td>
-                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{cart.price} </td>
-                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>Delete</td>
+                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{parseInt(cart.price) * cart.quantity} </td>
+                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem', color:'red' }}>Delete</td>
                                       </tr>
                                   )
                               })}
@@ -73,7 +80,7 @@ export default function Cart(props) {
           </DialogContent>
           <DialogActions>
               {/* Add any actions or buttons here */}
-              <button onClick={handleBuyAgain} className='buyAgainButton'>Buy Again</button>
+              <button onClick={handleBuyAgain} className='buyAgainButton'>Buy</button>
           </DialogActions>
       </Dialog>
   )

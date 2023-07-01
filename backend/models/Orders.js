@@ -14,4 +14,4 @@ const foodOrders = new Schema({
   ],
 });
 
-module.exports = mongoose.model("Oders", foodOrders)
+module.exports = mongoose.model("Orders", foodOrders)
