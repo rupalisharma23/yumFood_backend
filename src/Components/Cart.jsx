@@ -33,6 +33,13 @@ export default function Cart(props) {
     const handleBuyAgain = () => {
        buyOrders()
     };
+
+    const deleteCartItems = (index) =>{
+        const filteredArray = cartItems.filter((obj, index1) => index1 !== index);
+        setCartItems(filteredArray)
+    }
+
+
   return (
       <Dialog
           open={props.cartFlag}
@@ -62,13 +69,13 @@ export default function Cart(props) {
                           </thead>
                           <tbody>
                               {/* Add your table rows here */}
-                              {cartItems.map((cart) => {
+                              {cartItems.map((cart, index) => {
                                   return (
                                       <tr>
                                           <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{cart.name}</td>
                                           <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{cart.quantity}</td>
                                           <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem' }}>{parseInt(cart.price) * cart.quantity} </td>
-                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem', color:'red' }}>Delete</td>
+                                          <td style={{ padding: '1rem 0rem', fontFamily: 'cursive', fontSize: '1.2rem', color:'red' }} onClick={()=>{deleteCartItems(index)}} >Delete</td>
                                       </tr>
                                   )
                               })}

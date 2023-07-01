@@ -4,7 +4,8 @@ import './Home.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cart from './Cart';
-import { getListItemSecondaryActionClassesUtilityClass } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
 
@@ -46,8 +47,6 @@ export default function Home() {
     };
 
     const handleAddToCart = (index1, index2, dishes) => {
-        console.log(dishes)
-        const selectedItem = food[index1].dish[index2];
         const itemIndex = cartItems.findIndex((item) => item.id === dishes._id);
         let tempArray = [...cartItems]
         if (itemIndex > -1){
@@ -64,11 +63,22 @@ export default function Home() {
             })
         }
         setCartItems(tempArray)
+        toast.success('item added to your cart', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            className: 'custom-toast', // Add your custom class here
+        })
     };
 
   return (
     <div style={{width:'100%'}}>
-        <Navigation setCartFlag={setCartFlag} />
+        <ToastContainer/>
+          <Navigation setCartFlag={setCartFlag} cartItems={cartItems} />
           <div className="image-container">
               <img src="/background.jpg" alt="Image" />
           </div>
