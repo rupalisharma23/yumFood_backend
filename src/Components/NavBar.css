@@ -53,6 +53,19 @@ height: 100%;
     object-fit: cover;
 }
 
+.cartCount{
+  position: absolute;
+    top: -14px;
+    background: red;
+    border-radius: 54%;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    left: 11px;
+    font-size: 15px;
+    font-family: cursive;
+}
+
 
 
 /* Add any additional styling as per your requirements */
