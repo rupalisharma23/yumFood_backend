@@ -9,7 +9,8 @@ const foodOrders = new Schema({
       price: String,
       quantity: Number,
       _id: String,
-      date:String
+      date:String,
+      image:String
     }
   ],
 });

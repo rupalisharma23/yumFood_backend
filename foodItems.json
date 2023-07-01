@@ -5,17 +5,20 @@
       {
         "name": "chicken fried rice",
         "price": "100",
-        "quantity":1
+        "quantity": 1,
+        "image": "chickenBiryani.jpg"
       },
       {
         "name": "miglayi chicken fried rice",
         "price": "200",
-        "quantity": 1
+        "quantity": 1,
+        "image": "mughlayiBiryani.jpg"
       },
       {
         "name": " aalo chicken rice",
         "price": "200",
-        "quantity": 1
+        "quantity": 1,
+        "image": "aaloBiryani.jpg"
       }
     ]
   },
@@ -25,17 +28,20 @@
       {
         "name": "chicken pizza",
         "price": "100",
-        "quantity": 1
+        "quantity": 1,
+        "image":"chickenPizza.jpg"
       },
       {
         "name": "miglayi pizza",
         "price": "200",
-        "quantity": 1
+        "quantity": 1,
+        "image": "mughlayiPizza.jpg"
       },
       {
         "name": " aalo pizza",
         "price": "200",
-        "quantity": 1
+        "quantity": 1,
+        "image": "aaloPizza.jpg"
       }
     ]
   }
