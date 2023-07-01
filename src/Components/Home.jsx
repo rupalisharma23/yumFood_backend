@@ -6,6 +6,7 @@ import axios from 'axios';
 import Cart from './Cart';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import backendURL from './Config';
 
 export default function Home() {
 
@@ -58,7 +59,8 @@ export default function Home() {
                 name: dishes.name,
                 price: dishes.price,
                 quantity: dishes.quantity,
-                date: formattedDate
+                date: formattedDate,
+                image: dishes.image
                 
             })
         }
@@ -93,7 +95,7 @@ export default function Home() {
                                     return (
                                         <div className="product-card">
                                             <div className="image-container-product">
-                                                <img src="/background.jpg" />
+                                                <img src={`${backendURL}/images/${dishes.image}`} alt={dishes.image} />
                                             </div>
                                             <div className="details-container">
                                                 <h3>{dishes.name}</h3>

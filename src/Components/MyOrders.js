@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "./NavBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import backendURL from "./Config";
 
 export default function () {
   const [orders, setOrders] = useState([]);
@@ -32,6 +33,7 @@ export default function () {
           name: order.name,
           price: order.price,
           quantity: order.quantity,
+          image:order.image
         });
       });
       return result;
@@ -52,7 +54,10 @@ export default function () {
               {groupedOrders[date].map((order, index) => (
                 <div className="product-card">
                   <div className="image-container-product">
-                    <img src="/background.jpg" />
+                    <img
+                      src={`${backendURL}/images/${order.image}`}
+                      alt={order.image}
+                    />
                   </div>
                   <div className="details-container">
                     <h3>{order.name}</h3>
@@ -71,3 +76,4 @@ export default function () {
     </div>
   );
 }
+
