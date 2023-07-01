@@ -34,3 +34,9 @@
     font-family: cursive;
     text-align: center;
 }
+
+.closeDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

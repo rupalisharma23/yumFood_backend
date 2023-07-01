@@ -59,8 +59,7 @@ export default function Home() {
                 name: dishes.name,
                 price: dishes.price,
                 quantity: dishes.quantity,
-                date: formattedDate,
-                email:localStorage.getItem('email')
+                date: formattedDate
                 
             })
         }
@@ -109,7 +108,7 @@ export default function Home() {
                 )
             })
           }
-          <Cart cartFlag={cartFlag} cartItems={cartItems} setCartItems={setCartItems} />
+          <Cart cartFlag={cartFlag} cartItems={cartItems} setCartItems={setCartItems} setCartFlag={setCartFlag} />
     </div>
   )
 }

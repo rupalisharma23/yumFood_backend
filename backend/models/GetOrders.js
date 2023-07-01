@@ -5,4 +5,4 @@ const getOrders = new Schema({
   orders: [{ name: String, price: String, quantity: Number }],
 });
 
-module.exports = mongoose.model("oders",getOrders)
+module.exports = mongoose.model("orders",getOrders)
