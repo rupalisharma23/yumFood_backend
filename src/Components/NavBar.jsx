@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const Navigation = () => {
+const Navigation = (props) => {
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -15,7 +15,7 @@ const Navigation = () => {
                 <NavLink to="/MyOrders" className="nav-button">
                     My Orders
                 </NavLink>
-                <NavLink  className="nav-button">
+                <NavLink className="nav-button" onClick={() => { props.setCartFlag(true) }}>
                     <ShoppingCartIcon className="white-icon" />
                 </NavLink>
             </div>

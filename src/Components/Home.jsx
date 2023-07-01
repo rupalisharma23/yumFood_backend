@@ -3,11 +3,21 @@ import Navigation from './NavBar';
 import './Home.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Cart from './Cart';
+import { getListItemSecondaryActionClassesUtilityClass } from '@mui/material';
 
 export default function Home() {
 
     const[food, setFood] = useState([])
     const [cartItems, setCartItems] = useState([])
+    const [cartFlag, setCartFlag] = useState(false)
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // Months are zero-based
+    const year = currentDate.getFullYear();
+
+    // Format the date as "1/07/2023"
+    const formattedDate = `${day}/${month}/${year}`;
 
     useEffect(()=>{
         foodListApi()
@@ -48,7 +58,9 @@ export default function Home() {
                 id: dishes._id,
                 name: dishes.name,
                 price: dishes.price,
-                quantity: dishes.quantity
+                quantity: dishes.quantity,
+                date: formattedDate,
+                email:localStorage.getItem('email')
                 
             })
         }
@@ -56,8 +68,8 @@ export default function Home() {
     };
 
   return (
-    <div>
-        <Navigation/>
+    <div style={{width:'100%'}}>
+        <Navigation setCartFlag={setCartFlag} />
           <div className="image-container">
               <img src="/background.jpg" alt="Image" />
           </div>
@@ -97,6 +109,7 @@ export default function Home() {
                 )
             })
           }
+          <Cart cartFlag={cartFlag} cartItems={cartItems} setCartItems={setCartItems} />
     </div>
   )
 }
