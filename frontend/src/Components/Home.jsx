@@ -27,7 +27,7 @@ export default function Home() {
 
     const foodListApi = () => {
             return axios
-                .get(`http://localhost:5000/api/foodList` )
+                .get(`${backendURL}/api/foodList` )
                 .then((res) => {
                     setFood(res.data)
                 })

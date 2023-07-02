@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './SignupLogin.css';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
+import backendURL from './Config';
 
 export default function SignupLogin() {
     const [name, setName] = useState('');
@@ -40,7 +41,7 @@ export default function SignupLogin() {
         else{
             return axios
                 .post(
-                    `http://localhost:5000/api/createUser`,
+                    `${backendURL}/api/createUser`,
                     {
                         email: email,
                         password: password,
@@ -68,7 +69,7 @@ export default function SignupLogin() {
         else{
             return axios
                 .post(
-                    `http://localhost:5000/api/login`,
+                    `${backendURL}/api/login`,
                     {
                         email: emailLogin,
                         password: passwordLogin

@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoDBConnection = require("./db")
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const path = require("path"); 
-const cors = require("cors")
+const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config();
 
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use((req, res, next) => {

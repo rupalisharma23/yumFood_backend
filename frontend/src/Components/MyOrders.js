@@ -13,7 +13,7 @@ export default function () {
 
   const OrderListApi = () => {
     return axios
-      .post(`http://localhost:5000/api/getOrders`, {
+      .post(`${backendURL}/api/getOrders`, {
         email: localStorage.getItem("email"),
       })
       .then((res) => {
