@@ -7,9 +7,24 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 
-app.use(cors({ origin: process.env.BASE_URL }));
+const allowedOrigins = [
+  process.env.BASE_URL,
+  "http://localhost:3000"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", process.env.BASE_URL);
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
