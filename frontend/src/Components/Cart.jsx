@@ -3,6 +3,7 @@ import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import './Cart.css';
 import axios from 'axios';
 import CloseIcon from '@mui/icons-material/Close';
+import backendURL from './Config';
 
 export default function Cart(props) {
     let { cartItems, setCartItems, setCartFlag } = props;
@@ -19,7 +20,7 @@ export default function Cart(props) {
 
     const buyOrders =() =>{
         return axios
-            .post(`http://localhost:5000/api/Orders`, {
+            .post(`${backendURL}/api/Orders`, {
                 email:localStorage.getItem('email'),
                 orders:cartItems
             })

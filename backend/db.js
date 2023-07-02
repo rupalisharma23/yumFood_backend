@@ -1,30 +1,9 @@
 const mongoose = require("mongoose");
 
-const mongoURI =
-  "mongodb://rupalisharma232002:7oJXlGv9H3UVJuEF@ac-usa01zy-shard-00-00.jdcmmcu.mongodb.net:27017,ac-usa01zy-shard-00-01.jdcmmcu.mongodb.net:27017,ac-usa01zy-shard-00-02.jdcmmcu.mongodb.net:27017/yumFoodMERN?ssl=true&replicaSet=atlas-qfmnrv-shard-0&authSource=admin&retryWrites=true&w=majority";
-
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(mongoURI);
+    await mongoose.connect(process.env.DATABASE_URL);
     console.log("Connected to MongoDB");
-
-    // const FoodItem = mongoose.model(
-    //   "food_items",
-    //   new mongoose.Schema({
-    //     categoryName: String,
-    //     name: String,
-    //     options: [
-    //       {
-    //         half: String,
-    //         full: String,
-    //       },
-    //     ],
-    //   })
-    // );
-
-    // const fetchedFoodItems = await FoodItem.find({});
-
-    // console.log("Fetched data from 'food_items' collection:", fetchedFoodItems);
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }
