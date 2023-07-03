@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken"); 
+const jwt = require("jsonwebtoken");
 
 router.post(
   "/createUser",
@@ -19,13 +19,20 @@ router.post(
     try {
       let salt = await bcrypt.genSalt(10);
       let securePass = await bcrypt.hash(req.body.password, salt);
-      await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: securePass,
-      });
+      const isEmailPresent = await User.findOne({ 'email': req.body.email });
+      if (!isEmailPresent) {
+        await User.create({
+          name: req.body.name,
+          email: req.body.email,
+          password: securePass,
+          address:req.body.address
+        });
 
-      res.json({ success: true });
+        res.json({ success: true });
+      }
+      else{
+        res.status(400).json({ error: "email is already in use" });
+      }
     } catch (err) {
       console.log(err);
       res.json({ success: false });
@@ -65,7 +72,7 @@ router.post(
           id: userData.id,
         },
       };
-      const authToken = jwt.sign(data,process.env.jwtSecret);
+      const authToken = jwt.sign(data, process.env.jwtSecret);
       return res.json({ success: true, authToken: authToken });
     } catch (err) {
       console.log(err);
