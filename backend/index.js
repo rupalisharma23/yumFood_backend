@@ -47,7 +47,7 @@ app.use('/api', require('./Routes/Routes/SignupLogin'))
 app.use('/api', require('./Routes/Routes/GetApiFrItems'))
 app.use('/api', require('./Routes/Routes/PostApiForOrders'))
 app.use('/api', require('./Routes/Routes/GetApiForOrder'))
-// app.use('/api', require('./Routes/Routes/PostApiForCart'))
+app.use('/api', require('./Routes/Routes/PostApiForCart'))
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
