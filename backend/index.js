@@ -7,6 +7,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const history = require("connect-history-api-fallback");
 dotenv.config();
+const bodyParser = require("body-parser");
 
 const allowedOrigins = [
   process.env.BASE_URL,
@@ -38,6 +39,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 app.use(history());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "build")));
 app.use("/images", express.static(path.join(__dirname, "/images")));
 app.use(express.json())
@@ -45,6 +47,7 @@ app.use('/api', require('./Routes/Routes/SignupLogin'))
 app.use('/api', require('./Routes/Routes/GetApiFrItems'))
 app.use('/api', require('./Routes/Routes/PostApiForOrders'))
 app.use('/api', require('./Routes/Routes/GetApiForOrder'))
+// app.use('/api', require('./Routes/Routes/PostApiForCart'))
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
