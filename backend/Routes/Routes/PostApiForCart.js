@@ -4,7 +4,7 @@ const Cart = require("../../models/AddToCart");
 
 router.post('/cart', async (req,res)=>{
   try{
-    const {quantity, email, name, _id, image, date} = req.body;
+    const {quantity, email, name, _id, image, date, price} = req.body;
     const cartItem = await Cart.findOne({ email, "cart._id": _id }); 
          if (cartItem) {
            // If the _id exists, perform an update using the positional operator
@@ -22,6 +22,7 @@ router.post('/cart', async (req,res)=>{
              _id,
              image,
              date,
+             price
            };
 
            const result = await Cart.findOneAndUpdate(
