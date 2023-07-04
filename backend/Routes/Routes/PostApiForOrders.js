@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Orders = require("../../models/Orders");
+const Cart = require("../../models/AddToCart");
 
 router.post("/Orders", async (req, res) => {
   const { email, orders } = req.body;
@@ -20,6 +21,11 @@ router.post("/Orders", async (req, res) => {
       await orderDocument.save();
       res.json({ success: "orders placed" });
     }
+    const result = await Cart.findOneAndUpdate(
+      { email },
+      { $set: { "cart": [] } },
+      { new: true }
+    );
   } catch (error) {
     res.json({ "server error": error.message });
   }
