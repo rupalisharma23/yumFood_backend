@@ -7,7 +7,7 @@ router.get('/userDetails', async(req,res)=>{
             const email = req.header('email');
             if(email){
 
-            const userInfo = await User.find({ email: email });
+            const userInfo = await User.findOne({ email: email });
             res.status(200).json({ userInfo });
             }
             else{

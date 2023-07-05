@@ -21,10 +21,8 @@ router.post("/Orders", async (req, res) => {
       await orderDocument.save();
       res.json({ success: "orders placed" });
     }
-    const result = await Cart.findOneAndUpdate(
-      { email },
-      { $set: { "cart": [] } },
-      { new: true }
+    const result = await Cart.findOneAndDelete(
+      { email }
     );
   } catch (error) {
     res.json({ "server error": error.message });

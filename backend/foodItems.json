@@ -1,0 +1,102 @@
+[
+  {
+    "categoryName": "biryani",
+    "dish": [
+      {
+        "name": "chicken fried rice",
+        "price": "100",
+        "quantity": 1,
+        "image": "chickenBiryani.jpg"
+      },
+      {
+        "name": "miglayi chicken fried rice",
+        "price": "200",
+        "quantity": 1,
+        "image": "mughlayiBiryani.jpg"
+      },
+      {
+        "name": " aalo chicken rice",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloBiryani.jpg"
+      },{
+        "name": " mutton rice",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloBiryani.jpg"
+      },{
+        "name": " bhindi rice",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloBiryani.jpg"
+      }
+    ]
+  },
+  {
+    "categoryName": "pizza",
+    "dish": [
+      {
+        "name": "chicken pizza",
+        "price": "100",
+        "quantity": 1,
+        "image":"chickenPizza.jpg"
+      },
+      {
+        "name": "miglayi pizza",
+        "price": "200",
+        "quantity": 1,
+        "image": "mughlayiPizza.jpg"
+      },
+      {
+        "name": " aalo pizza",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloPizza.jpg"
+      },{
+        "name": " makhni pizza",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloPizza.jpg"
+      },{
+        "name": " panner pizza",
+        "price": "200",
+        "quantity": 1,
+        "image": "aaloPizza.jpg"
+      }
+    ]
+  },{
+    "categoryName": "burger",
+    "dish": [
+      {
+        "name": "chicken burger",
+        "price": "100",
+        "quantity": 1,
+        "image": "burger1.jpg"
+      },
+      {
+        "name": "miglayi burger",
+        "price": "200",
+        "quantity": 1,
+        "image": "burger2.jpg"
+      },
+      {
+        "name": " aalo burger",
+        "price": "200",
+        "quantity": 1,
+        "image": "burger3.jpg"
+      },
+      {
+        "name": " makhni burger",
+        "price": "200",
+        "quantity": 1,
+        "image": "burger4.jpg"
+      },
+      {
+        "name": " panner burger",
+        "price": "200",
+        "quantity": 1,
+        "image": "burger5.jpg"
+      }
+    ]
+  }
+]
