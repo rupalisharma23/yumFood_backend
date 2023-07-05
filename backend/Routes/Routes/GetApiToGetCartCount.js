@@ -10,6 +10,7 @@ router.get('/getCount', async (req,res)=>{
           }
           else{
             const cartCount = await Cart.findOne({email});
+            console.log(cartCount)
             if(cartCount){
             res.status(200).json({ count: cartCount.cart.length });
             }

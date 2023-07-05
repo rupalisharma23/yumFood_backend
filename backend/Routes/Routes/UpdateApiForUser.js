@@ -7,7 +7,7 @@ router.put('/updateInfo', async(req,res)=>{
           const {email, password} = req.body;
           const preemail = req.header('email');
           const emailExist = await User.findOne({email})
-          if(emailExist){
+          if(emailExist && emailExist.email!==preemail){
             return res.status(404).json({ error: "email already exists" });
           }
           else{
